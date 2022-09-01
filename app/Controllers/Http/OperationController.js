@@ -31,21 +31,26 @@ class OperationController {
         const { id } = params
         
         const operation = await Operation.find(id);
-       console.log("hola",operation) 
+       
        
         await operation.delete()
         return operation
     }
 
-    // async update({auth,params, request}){
-    //     const user = await auth.getUser()
-    //     const {id} = params
-    //     const operation = await Operation.find(id)
-    //     //const {concepto, monto, fecha, tipo} = request.all()
-    //     //AutorizacionService.verificarPermiso(operation, user)
-    //     operation.merge(request.all())
-    //     await Operation.save()
-    //     return operation
-    // }
+    async update({auth,params, request}){
+         const user = await auth.getUser()
+        const {id} = params
+        const operation = await Operation.find(id)
+        
+        const {concepto, monto, fecha} = request.all()
+        //AutorizacionService.verificarPermiso(operation, user)
+        await operation.merge({
+            concepto,
+            monto,
+            fecha,
+        })
+        await Operation.save()
+        return operation
+    }
 }
 module.exports = OperationController

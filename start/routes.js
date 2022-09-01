@@ -30,5 +30,5 @@ Route.post('/user/login', 'UserController.login')
 //crud de operaciones
 Route.get('/operaciones/:user_id','OperationController.index')
 Route.post('/operaciones','OperationController.create')
-// Route.put('/operaciones/:id','OperationController.update')
+Route.put('/operaciones/:id','OperationController.update')
 Route.delete('/operaciones/:id','OperationController.destroy')
