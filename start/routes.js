@@ -2,6 +2,7 @@
 
 const UserController = require('../app/Controllers/Http/UserController')
 const OperationController = require('../app/Controllers/Http/OperationController')
+
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -29,5 +30,5 @@ Route.post('/user/login', 'UserController.login')
 //crud de operaciones
 Route.get('/operaciones/:user_id','OperationController.index')
 Route.post('/operaciones','OperationController.create')
-// Route.put('/operaciones','OperationController')
-// Route.delete('/operaciones','OperationController')
+// Route.put('/operaciones/:id','OperationController.update')
+Route.delete('/operaciones/:id','OperationController.destroy')
