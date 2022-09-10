@@ -30,9 +30,34 @@ const OperationList = () => {
   }, []);
   //----------------------------------------------------------------------
 
+const newOperation = ()=>{
+  
+
+    <div>
+      <tr>
+    <input placeholder="aaaa"></input>
+    </tr>
+    </div>
+     
+}
+
+const deleteOperation = async (id)=>{
+  await axios.delete(`http://localhost:3333/operaciones/${id}`)
+  window.location.reload()
+  console.log("elemento eliminado")
+}
+
   return (
     <div>
-      <h2>lista de operaciones</h2>
+     
+        <div className="d-flex justify-content-center ">
+      <h2>lista de operaciones </h2>
+      </div>
+     
+      <button className="d-flex flex-row-reverse btn btn-secondary m-1"
+      onClick={newOperation}>+</button>
+    
+      
       <div>
         <table className="table table-hover table-dark">
           <thead>
@@ -54,10 +79,16 @@ const OperationList = () => {
                   <td>{e.tipo}</td>
                   <td>{e.monto}</td>
                   <td>
+                  <button>
                     <Pencil />
+                  </button>
                   </td>
                   <td>
+                    <button
+                    onClick={()=>deleteOperation(e.id)}
+                    >
                     <Trash />
+                    </button>
                   </td>
                 </tr>
               </tbody>
