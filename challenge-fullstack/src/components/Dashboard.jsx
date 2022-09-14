@@ -1,37 +1,37 @@
 
-import React, { useEffect, useState }  from 'react'
+import React from 'react'
 // import { auth, getUser } from '@adonisjs/auth'
 import OperationList from './OperationList'
-import { Pencil, Trash } from "react-bootstrap-icons";
-import axios from "axios";
+
+// import axios from "axios";
 
 const Dashboard =  () => {
 
 
-  const [userOperations, setUserOperations] = useState()
+  // const [userOperations, setUserOperations] = useState()
 //----------------------------------------------------------------------
 //traigo el token
 
-const getUser= async ()=>{
-  let myToken = JSON.parse(localStorage.getItem("auth_token"))
+// const getUser= async ()=>{
+//   let myToken = JSON.parse(localStorage.getItem("auth_token"))
       
-  let headers= {
-      "Authorization": `Bearer ${myToken.token}` 
-    }  
-  let json = await axios.get(`http://localhost:3333/operaciones/1`,{headers})
-  const operations = json.data
-    setUserOperations(operations)
+//   let headers= {
+//       "Authorization": `Bearer ${myToken.token}` 
+//     }  
+//   let json = await axios.get(`http://localhost:3333/operaciones/1`,{headers})
+//   const operations = json.data
+//     setUserOperations(operations)
 
-  console.log("hola",operations[0].fecha.slice(0,10))
-  return operations
-  }
+//   console.log("hola",operations[0].fecha.slice(0,10))
+//   return operations
+//   }
 
   
 //----------------------------------------------------------------------
 // useEfect
-useEffect(() => {
-  getUser()
-},[])
+// useEffect(() => {
+//   getUser()
+// },[])
 //----------------------------------------------------------------------
 
   

@@ -49,7 +49,7 @@ class OperationController {
             monto,
             fecha,
         })
-        await Operation.save()
+        await operation.save()
         return operation
     }
 }
