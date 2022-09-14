@@ -11,11 +11,7 @@ class OperationsSchema extends Schema {
       table.string('concepto',80).notNullable()
       table.integer('monto').notNullable()
       table.date('fecha')
-      table.enu('tipo',['ingreso','egreso'],{
-        useNative: true,
-        enumName: 'type',
-        existingType: false,
-      })
+      table.string('tipo',80).notNullable()
       table.timestamps()
     })
   }
