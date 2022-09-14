@@ -126,10 +126,18 @@ const OperationList = () => {
 return json
   }
 
+  const minusEdit = ()=>{
+    setEditOperationFlag ("false")
+  }
+
+  const minusCreate = ()=>{
+    setCreateOperationFlag ("false")
+  }
+
   return (
     <div>
       <div className="d-flex justify-content-center ">
-        <h2>lista de operaciones </h2>
+        <h2>Lista de operaciones </h2>
       </div>
         <button className="btn btn-secondary" onClick={()=> addOperation()}>+</button>
       <div>
@@ -166,7 +174,7 @@ return json
                   </td>
                   <td>
                     <button
-                      className="btn btn-secondary"
+                      className="btn btn-danger"
                       onClick={() => deleteOperation(e.id)}
                     >
                       <Trash />
@@ -182,7 +190,8 @@ return json
       {createOperationFlag==="true"? (
             
             <div>
-              <h2>Nueva operacion</h2>
+              <h2>Nueva operación</h2>
+              <button className="btn btn-danger" onClick={()=> minusCreate()}>X</button>
       <table className="table table-hover table-dark">
         <thead>
           <tr>
@@ -250,72 +259,13 @@ return json
   
               </div>
             )}
-      {/* //--------------------------- */}
-      {/* <h2>Nueva operacion</h2>
-      <table className="table table-hover table-dark">
-        <thead>
-          <tr>
-            <th scope="col">Fecha</th>
-            <th scope="col">Concepto</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Monto</th>
-            <th scope="col">Crear</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>
-              <input
-                id="fecha"
-                className="bg-dark form-control-plaintext text-white"
-                type="date"
-              />
-            </th>
-            <th>
-              <input
-                id="concepto"
-                className="bg-dark form-control-plaintext text-white"
-                type="text"
-                placeholder="Concepto"
-              />
-            </th>
-            <th>
-              <select
-                id="tipo"
-                className="bg-dark form-control-plaintext text-white"
-                type="text"
-                placeholder="Tipo"
-              >
-                <option value={null}>Tipo</option>
-                <option value={"ingreso"}>Ingreso</option>
-                <option value={"egreso"}>Egreso</option>
-              </select>
-            </th>
-            <th>
-              <input
-                id="monto"
-                className="bg-dark form-control-plaintext text-white"
-                type="number"
-                placeholder="Monto"
-              />
-            </th>
-            <th>
-              <button
-                className="btn btn-secondary"
-                onClick={() => createOperation(this)}
-              >
-                <Check />
-              </button>{" "}
-            </th>
-          </tr>
-        </tbody>
-      </table> */}
+      
 
           {editOperationFlag==="true"? (
             
           <div>
-            <h1 className="text-dark">Editar Operacion</h1>
-
+            <h2 className="text-dark">Editar operación</h2>
+            <button className="btn btn-danger" onClick={()=>minusEdit()}>X</button>
             <table className="table table-hover table-dark">
         <thead>
           <tr>

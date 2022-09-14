@@ -1,5 +1,6 @@
 
 import React from 'react'
+import Balance from './Balance'
 // import { auth, getUser } from '@adonisjs/auth'
 import OperationList from './OperationList'
 
@@ -38,7 +39,7 @@ const Dashboard =  () => {
   return (
     <div>
     <div>    
-    <h2>Balance</h2>
+    <Balance/>
     </div>
    <div>
       <OperationList/>
