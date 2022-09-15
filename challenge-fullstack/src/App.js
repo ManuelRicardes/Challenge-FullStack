@@ -11,9 +11,9 @@ import Register from './components/Register';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter >
       <Switch>
-    <div className="App">
+    <div style={{backgroundColor:"#d9d9d9"}} className="App vh-auto">
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />

@@ -3,58 +3,29 @@ import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-
 const Login = () => {
-
   const history = useHistory();
 
   const [email, setLoginEmail] = useState("");
-  const [password, setLoginPassword] = useState("")
-  let data = {email,password }
-  const login=  async () =>{
+  const [password, setLoginPassword] = useState("");
+  let data = { email, password };
+
+  const login = async () => {
     setLoginEmail("");
     setLoginPassword("");
     try {
-       let token = await axios.post(`http://localhost:3333/user/login`, data)
-            
-      localStorage.setItem("auth_token",JSON.stringify(token.data))
-      console.log(token.data)
-       
-// console.log("te loegueaste", token.data)
-history.push('/dashboard')
-return token
+      let token = await axios.post(`http://localhost:3333/user/login`, data);
+
+      localStorage.setItem("auth_token", JSON.stringify(token.data));
+      console.log(token.data[0]);
+
+      // console.log("te loegueaste", token.data)
+      history.push("/dashboard");
+      return token;
     } catch (error) {
-      console.log("no entro al try")
-      
-     
+      console.log("no entro al try");
     }
-
-  }
-
-
-// //logearse con el boton de login
-//   const login = async () => {
-//     try {
-//       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-//       setLoginEmail("");
-//       setLoginPassword("");
-
-//       for (let i = 0; i < cart.length; i++) {
-          
-//         await axios.put(`http://localhost:3001/cart/${auth.currentUser.email}/${cart[i].id}`)
-        
-//       }
-
-//       history.push('/home');
-
-//     } catch {{Swal.fire({
-//       icon: 'error',
-//       title: 'Oops...',
-//       text: 'Algo salio mal, revisa que el mail o contraseña ingresados sean los correctos',
-//       footer: '<a href="/home">Continuar sin iniciar sesión</a>'
-//     })}
-//     }
-//   };
+  };
 
   return (
     <section className="vh-100">

@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
+  const history = useHistory();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  let data = { email, password, username };
+
+  const register = async () => {
+    setEmail("");
+    setPassword("");
+    setUsername("");
+    try {
+      let token = await axios.post(`http://localhost:3333/user/register`, data);
+
+      localStorage.setItem("auth_token", JSON.stringify(token.data));
+
+      history.push("/dashboard");
+      return token;
+    } catch (error) {
+      console.log("no");
+    }
+  };
+
   return (
     <section class="vh-100 gradient-custom">
       <div class="container py-5 h-100">
@@ -18,6 +42,7 @@ const Register = () => {
                       type="emtextail"
                       id="typeUsernameX"
                       class="form-control form-control-lg"
+                      onChange={(e) => setUsername(e.target.value)}
                     />
                   </div>
 
@@ -27,6 +52,7 @@ const Register = () => {
                       type="email"
                       id="typeEmailX"
                       class="form-control form-control-lg"
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
 
@@ -36,12 +62,14 @@ const Register = () => {
                       type="password"
                       id="typePasswordX"
                       class="form-control form-control-lg"
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
 
                   <button
                     class="btn btn-outline-light btn-lg px-5"
                     type="submit"
+                    onClick={() => register()}
                   >
                     Sign up
                   </button>
